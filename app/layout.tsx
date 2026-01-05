@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   description:
     "Professional BIM engineering services: 3D modeling, multidisciplinary coordination, technical documentation, and construction project consultancy.",
   keywords: "BIM, Building Information Modeling, 3D modeling, BIM coordination, Engineering, construction, AEC, Architect",
-  generator: "v0.app",
   icons: {
     icon: "/icon.svg",
     apple: "/icon.svg",    
