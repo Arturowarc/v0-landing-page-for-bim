@@ -62,7 +62,6 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     setIsSubmitting(false);
   }
 }
-}
   return (
     <section id="contact" className="py-16 md:py-24 lg:py-32 bg-muted/30">
       <div className="container px-4 mx-auto">
