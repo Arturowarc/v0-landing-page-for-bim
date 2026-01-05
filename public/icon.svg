@@ -1,5 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect x="12" y="12" width="40" height="40" stroke="black" stroke-width="4" fill="none" />
-  <line x1="12" y1="32" x2="42" y2="32" stroke="black" stroke-width="4" />
-  <line x1="12" y1="22" x2="42" y2="22" stroke="black" stroke-width="4" />
+  <style>
+    /* Por defecto el color es negro */
+    path, rect, line { stroke: black; }
+
+    /* Si el sistema está en modo oscuro, cambia a blanco */
+    @media (prefers-color-scheme: dark) {
+      path, rect, line { stroke: white; }
+    }
+  </style>
+  <rect x="12" y="12" width="40" height="40" stroke-width="4" fill="none" />
+  <line x1="12" y1="32" x2="42" y2="32" stroke-width="4" />
+  <line x1="12" y1="22" x2="42" y2="22" stroke-width="4" />
 </svg>
