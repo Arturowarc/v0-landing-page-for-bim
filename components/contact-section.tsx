@@ -13,22 +13,50 @@ export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setMessage(null)
+async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setMessage(null);
 
-    // Simulate a brief delay
-    await new Promise((resolve) => setTimeout(resolve, 800))
+  const formData = new FormData(e.currentTarget);
 
-    setMessage({
-      type: "success",
-      text: "Message received! We'll get back to you shortly.",
-    })
-    e.currentTarget.reset()
-    setIsSubmitting(false)
+  // --- WEB3FORMS CONFIGURATION ---
+  // Replace 'YOUR_ACCESS_KEY_HERE' with the code sent to your Zoho email
+  formData.append("access_key", "e976dec5-1723-494d-a49a-3c820b7a3c33"); 
+  formData.append("subject", "New Inquiry from FORMAX Website");
+  formData.append("from_name", "FORMAX Web System");
+  formData.append("botcheck", ""); 
+  // -------------------------------
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setMessage({ 
+        type: "success", 
+        text: "Message sent successfully! We will get back to you shortly." 
+      });
+      e.currentTarget.reset(); 
+    } else {
+      setMessage({ 
+        type: "error", 
+        text: "Something went wrong. Please try again or contact us directly." 
+      });
+    }
+  } catch (error) {
+    setMessage({ 
+      type: "error", 
+      text: "Network error. Please check your connection and try again." 
+    });
+  } finally {
+    setIsSubmitting(false);
   }
-
+}
   return (
     <section id="contact" className="py-16 md:py-24 lg:py-32 bg-muted/30">
       <div className="container px-4 mx-auto">
