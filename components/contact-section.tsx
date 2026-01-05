@@ -18,19 +18,23 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
   setIsSubmitting(true);
   setMessage(null);
 
-  const formData = new FormData(e.currentTarget);
+  // Capturamos el formulario inmediatamente
+  const form = e.currentTarget;
+  const formData = new FormData(form);
 
-  // --- WEB3FORMS CONFIGURATION ---
-  // Replace 'YOUR_ACCESS_KEY_HERE' with the code sent to your Zoho email
-  formData.append("access_key", "e976dec5-1723-494d-a49a-3c820b7a3c33"); 
+  // --- CONFIGURACIÓN DE WEB3FORMS ---
+  formData.append("access_key", "e976dec5-1723-494d-a49a-3c820b7a3c33"); // <--- ASEGÚRATE DE PEGAR TU KEY AQUÍ
   formData.append("subject", "New Inquiry from FORMAX Website");
-  formData.append("from_name", "FORMAX Web System");
+  formData.append("from_name", "FORMAX Web");
   formData.append("botcheck", ""); 
-  // -------------------------------
+  // ----------------------------------
 
   try {
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
+      headers: {
+        "Accept": "application/json",
+      },
       body: formData
     });
 
@@ -41,21 +45,23 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         type: "success", 
         text: "Message sent successfully! We will get back to you shortly." 
       });
-      e.currentTarget.reset(); 
+      form.reset(); 
     } else {
       setMessage({ 
         type: "error", 
-        text: "Something went wrong. Please try again or contact us directly." 
+        text: "Something went wrong. Please try again." 
       });
     }
   } catch (error) {
+    console.error("Form error:", error);
     setMessage({ 
       type: "error", 
-      text: "Network error. Please check your connection and try again." 
+      text: "Network error. Please try again or check your internet connection." 
     });
   } finally {
     setIsSubmitting(false);
   }
+}
 }
   return (
     <section id="contact" className="py-16 md:py-24 lg:py-32 bg-muted/30">
