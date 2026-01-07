@@ -1,14 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
   <style>
-    /* Por defecto el color es negro */
-    path, rect, line { stroke: black; }
+    /* Aplicamos el color al stroke del marco y al fill de las barras */
+    rect { stroke: black; fill: black; }
+    
+    /* El marco cuadrado NO debe tener relleno, solo borde */
+    .marco { fill: none !important; }
 
-    /* Si el sistema está en modo oscuro, cambia a blanco */
     @media (prefers-color-scheme: dark) {
-      path, rect, line { stroke: white; }
+      rect { stroke: white; fill: white; }
     }
   </style>
-  <rect x="12" y="12" width="40" height="40" stroke-width="4" fill="none" />
-  <line x1="12" y1="32" x2="42" y2="32" stroke-width="4" />
-  <line x1="12" y1="22" x2="42" y2="22" stroke-width="4" />
+
+  {/* Marco cuadrado exterior */}
+  <rect 
+    className="marco" 
+    x="30" y="30" 
+    width="60" height="60" 
+    strokeWidth="6" 
+    fill="none" 
+  />
+
+  {/* Tres barras horizontales que sugieren F */}
+  <rect x="42" y="42" width="36" height="8" />
+  <rect x="42" y="57" width="28" height="7" />
+  <rect x="42" y="71" width="8" height="7" />
 </svg>
