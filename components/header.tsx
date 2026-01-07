@@ -15,22 +15,24 @@ export function Header() {
           {/* gap-2 da la separación ideal para un logo de este estilo */}
           <div className="flex items-center justify-center">
             <svg 
-              className="h-10 w-10 text-black" // Tamaño corregido a 40px para que no sea gigante
-              viewBox="10 10 44 44" // El "punto dulce" para que no se corte ni se encime
+              className="h-10 w-10 text-black" // Mantenemos el tamaño y color original
+              viewBox="0 0 120 120"           // Usamos el lienzo del nuevo logo
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
             >
+              {/* Marco cuadrado exterior - Usamos 'currentColor' para que herede 'text-black' */}
               <rect 
-                x="12" 
-                y="12" 
-                width="40" 
-                height="40" 
+                x="30" y="30" 
+                width="60" height="60" 
                 stroke="currentColor" 
-                strokeWidth="4" // Aumenté un poco el grosor para que tenga más peso visual
+                strokeWidth="3" 
                 fill="none" 
               />
-              <line x1="12" y1="32" x2="42" y2="32" stroke="currentColor" strokeWidth="4" />
-              <line x1="12" y1="22" x2="42" y2="22" stroke="currentColor" strokeWidth="4" />
+
+              {/* Tres barras horizontales - Cambiamos fill a 'currentColor' */}
+              <rect x="42" y="42" width="36" height="8" fill="currentColor" />
+              <rect x="42" y="57" width="28" height="7" fill="currentColor" />
+              <rect x="42" y="71" width="8" height="7" fill="currentColor" />
             </svg>
           </div>
           <span className="text-xl font-bold tracking-tight text-black">

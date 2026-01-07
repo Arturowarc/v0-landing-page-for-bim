@@ -10,23 +10,27 @@ export function Footer() {
             <div className="flex items-center space-x-2 mb-4">
               <div className="flex items-center justify-center">
                 <svg 
-                  className="h-12 w-12 text-black" // Tamaño aumentado (48px) y color negro
-                  viewBox="0 0 64 64" 
+                className="h-12 w-12 text-black" // Mantenemos el tamaño (48px) y color negro original
+                viewBox="0 0 120 120"           // El lienzo interno de tu nuevo logo
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* Marco cuadrado exterior */}
+                <rect 
+                  x="30" 
+                  y="30" 
+                  width="60" 
+                  height="60" 
+                  stroke="currentColor" 
+                  strokeWidth="5" // Aumentado a 5 para igualar el peso visual del strokeWidth="3" en un lienzo de 64
                   fill="none" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect 
-                    x="12" 
-                    y="12" 
-                    width="40" 
-                    height="40" 
-                    stroke="currentColor" 
-                    strokeWidth="3" 
-                    fill="none" 
-                  />
-                  <line x1="12" y1="32" x2="42" y2="32" stroke="currentColor" strokeWidth="3" />
-                  <line x1="12" y1="22" x2="42" y2="22" stroke="currentColor" strokeWidth="3" />
-                </svg>
+                />
+
+                {/* Tres barras horizontales (F) */}
+                <rect x="42" y="42" width="36" height="8" fill="currentColor" />
+                <rect x="42" y="57" width="28" height="7" fill="currentColor" />
+                <rect x="42" y="71" width="8" height="7" fill="currentColor" />
+              </svg>
               </div>
               <span className="text-base sm:text-lg font-bold text-foreground">FORMAX Studio</span>
             </div>
