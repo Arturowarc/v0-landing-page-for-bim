@@ -7,7 +7,7 @@
     xmlns="http://www.w3.org/2000/svg"
   >
     <style>
-      {`
+      {
         /* Color por defecto (Modo Claro) */
         .barra-f { fill: black; }
 
@@ -15,7 +15,7 @@
         @media (prefers-color-scheme: dark) {
           .barra-f { fill: white; }
         }
-      `}
+      }
     </style>
 
     {/* Tres barras horizontales con la clase para el color dinámico */}
@@ -26,3 +26,4 @@
     <rect className="barra-f" x="42" y="71" width="8" height="7" />
   </svg>
 </div>
+
