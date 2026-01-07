@@ -1,4 +1,4 @@
-<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}>
+<div className="flex flex-col items-center gap-6">
   <svg 
     width={iconSize} 
     height={iconSize} 
@@ -6,24 +6,19 @@
     fill="none" 
     xmlns="http://www.w3.org/2000/svg"
   >
-    <style>
-      {
-        /* Color por defecto (Modo Claro) */
-        .barra-f { fill: black; }
+    <style>{`
+      /* Color negro por defecto */
+      .f-bar { fill: #000000; }
 
-        /* Color cuando el sistema está en Modo Oscuro */
-        @media (prefers-color-scheme: dark) {
-          .barra-f { fill: white; }
-        }
+      /* Cambia a blanco si el sistema está en modo oscuro */
+      @media (prefers-color-scheme: dark) {
+        .f-bar { fill: #ffffff; }
       }
-    </style>
+    `}</style>
 
-    {/* Tres barras horizontales con la clase para el color dinámico */}
-    <rect className="barra-f" x="42" y="42" width="36" height="8" />
-    <rect className="barra-f" x="57" width="28" height="7" /> 
-    {/* Nota: x="42" y="57" en el original, asegúrate de mantener tus coordenadas exactas */}
-    <rect className="barra-f" x="42" y="57" width="28" height="7" />
-    <rect className="barra-f" x="42" y="71" width="8" height="7" />
+    {/* Las tres barras de la "F" */}
+    <rect className="f-bar" x="42" y="42" width="36" height="8" />
+    <rect className="f-bar" x="42" y="57" width="28" height="7" />
+    <rect className="f-bar" x="42" y="71" width="8" height="7" />
   </svg>
 </div>
-
