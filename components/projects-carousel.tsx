@@ -17,7 +17,7 @@ const projectImages = [
   },
   {
     title: "Technical Documentation",
-    description: "Automated construction drawings and detailed technical specifications",
+    description: "Construction drawings and detailed technical specifications",
     image: "/construction-technical-drawings-documentation.jpg",
   },
   {
@@ -26,8 +26,8 @@ const projectImages = [
     image: "/structural-bim-model-steel-concrete.jpg",
   },
   {
-    title: "BIM Coordination Meeting",
-    description: "Real-time collaborative coordination sessions with project stakeholders",
+    title: "MEP BIM Model",
+    description: "Fully coordinated MEP models with high-fidelity detailing for mechanical electrical and plumbing systems",
     image: "/bim-coordination-meeting-screen.jpg",
   },
 ]
