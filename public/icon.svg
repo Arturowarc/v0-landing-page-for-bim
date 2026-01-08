@@ -1,13 +1,33 @@
-<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* Color por defecto (Modo Claro): Negro */
+    .icon-element { 
+      fill: black; 
+    }
+    .stroke-element { 
+      stroke: black; 
+      fill: none;
+    }
+
+    /* Cambio automático para Modo Oscuro: Blanco */
+    @media (prefers-color-scheme: dark) {
+      .icon-element { 
+        fill: white; 
+      }
+      .stroke-element { 
+        stroke: white; 
+      }
+    }
+  </style>
+
   <rect 
+    class="stroke-element"
     x="30" y="30" 
     width="60" height="60" 
-    stroke="black" 
     stroke-width="3" 
-    fill="none" 
   />
 
-  <rect x="42" y="42" width="36" height="8" fill="black" />
-  <rect x="42" y="57" width="28" height="7" fill="black" />
-  <rect x="42" y="71" width="8" height="7" fill="black" />
+  <rect class="icon-element" x="42" y="42" width="36" height="8" />
+  <rect class="icon-element" x="42" y="57" width="28" height="7" />
+  <rect class="icon-element" x="42" y="71" width="8" height="7" />
 </svg>
