@@ -1,19 +1,13 @@
-<div className="flex flex-col items-center gap-6">
-  <svg 
-    width={iconSize} 
-    height={iconSize} 
-    viewBox="40 40 40 40" 
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect 
+    x="30" y="30" 
+    width="60" height="60" 
+    stroke="black" 
+    stroke-width="3" 
     fill="none" 
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    {/* Usamos 'currentColor' para que el SVG sea inteligente.
-      Para que cambie según el fondo sin Tailwind, 
-      le asignamos el color mediante el estilo del contenedor.
-    */}
-    <g style={{ fill: 'canvasText', color: 'canvasText' }}>
-      <rect x="42" y="42" width="36" height="8" fill="currentColor" />
-      <rect x="42" y="57" width="28" height="7" fill="currentColor" />
-      <rect x="42" y="71" width="8" height="7" fill="currentColor" />
-    </g>
-  </svg>
-</div>
+  />
+
+  <rect x="42" y="42" width="36" height="8" fill="black" />
+  <rect x="42" y="57" width="28" height="7" fill="black" />
+  <rect x="42" y="71" width="8" height="7" fill="black" />
+</svg>
