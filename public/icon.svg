@@ -1,4 +1,4 @@
-<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+<svg width="120" height="120" viewBox="28 28 64 64" xmlns="http://www.w3.org/2000/svg">
   <style>
     /* Color por defecto (Modo Claro): Negro */
     .icon-element { 
@@ -24,7 +24,7 @@
     class="stroke-element"
     x="30" y="30" 
     width="60" height="60" 
-    stroke-width="3" 
+    stroke-width="4" 
   />
 
   <rect class="icon-element" x="42" y="42" width="36" height="8" />
