@@ -100,7 +100,7 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
                   <div>
                     <p className="font-medium text-sm sm:text-base">Phone</p>
                     <a href="tel:+1234567890" className="text-sm sm:text-base text-muted-foreground hover:text-primary">
-                      +1 (234) 567-890
+                       +1 (301) 567-890
                     </a>
                   </div>
                 </div>
@@ -112,9 +112,7 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
                   <div>
                     <p className="font-medium text-sm sm:text-base">Location</p>
                     <p className="text-sm sm:text-base text-muted-foreground">
-                      Serving US Market
-                      <br />
-                      Nearshore Operations
+                      Maryland, US
                     </p>
                   </div>
                 </div>

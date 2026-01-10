@@ -116,16 +116,16 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 flex-shrink-0" />
-                +1 (555) 123-4567
+                +1 (301) 678-1416
               </li>
               <li className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 flex-shrink-0" />
-                Miami, FL - USA
+                 Maryland - USA
               </li>
             </ul>
             <div className="flex gap-4 mt-4">
               <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Linkedin className="h-5 w-5" />
+                
                 <span className="sr-only">LinkedIn</span>
               </Link>
             </div>
