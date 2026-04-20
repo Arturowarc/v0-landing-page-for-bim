@@ -5,25 +5,39 @@ import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
 import { useState } from "react"
-// import { sendContactEmail } from "@/app/actions/contact"
+import Link from "next/link"
 
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
+  const [smsConsent, setSmsConsent] = useState(false)
+  const [termsAccepted, setTermsAccepted] = useState(false)
 
 async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
   e.preventDefault();
+  
+  if (!termsAccepted) {
+    setMessage({ 
+      type: "error", 
+      text: "Please accept the Privacy Policy and Terms & Conditions to continue." 
+    });
+    return;
+  }
+  
   setIsSubmitting(true);
   setMessage(null);
 
-  // Capturamos el formulario inmediatamente
   const form = e.currentTarget;
   const formData = new FormData(form);
 
-  // --- CONFIGURACIÓN DE WEB3FORMS ---
-  formData.append("access_key", "e976dec5-1723-494d-a49a-3c820b7a3c33"); // <--- ASEGÚRATE DE PEGAR TU KEY AQUÍ
+  // Add SMS consent status to form data
+  formData.append("sms_consent", smsConsent ? "Yes" : "No");
+
+  // --- WEB3FORMS CONFIGURATION ---
+  formData.append("access_key", "e976dec5-1723-494d-a49a-3c820b7a3c33");
   formData.append("subject", "New Inquiry from FORMAX Website");
   formData.append("from_name", "FORMAX Web");
   formData.append("botcheck", ""); 
@@ -45,7 +59,9 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         type: "success", 
         text: "Message sent successfully! We will get back to you shortly." 
       });
-      form.reset(); 
+      form.reset();
+      setSmsConsent(false);
+      setTermsAccepted(false);
     } else {
       setMessage({ 
         type: "error", 
@@ -154,6 +170,19 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
               </div>
 
               <div className="space-y-2">
+                <label htmlFor="phone" className="text-sm font-medium">
+                  Phone Number <span className="text-muted-foreground font-normal">(Optional)</span>
+                </label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="+1 (555) 123-4567"
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium">
                   Tell us about your project *
                 </label>
@@ -165,6 +194,68 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
                   required
                   disabled={isSubmitting}
                 />
+              </div>
+
+              {/* SMS Consent Checkbox - Optional */}
+              <div className="space-y-3 pt-2">
+                <div className="flex items-start gap-3">
+                  <Checkbox
+                    id="sms-consent"
+                    checked={smsConsent}
+                    onCheckedChange={(checked) => setSmsConsent(checked === true)}
+                    disabled={isSubmitting}
+                    className="mt-1"
+                  />
+                  <label htmlFor="sms-consent" className="text-sm leading-relaxed cursor-pointer">
+                    I consent to receive SMS messages from FORMAX STUDIO LLC related to project updates, service communications, and transactional notifications.
+                  </label>
+                </div>
+                
+                {/* SMS Disclosures */}
+                <div className="text-xs text-muted-foreground bg-muted/50 p-3 rounded-md space-y-1">
+                  <p><strong>SMS Communication Disclosures:</strong></p>
+                  <ul className="list-disc list-inside space-y-0.5 pl-1">
+                    <li>Message types: Project updates, service communications, and transactional notifications</li>
+                    <li>Message frequency may vary</li>
+                    <li>Message and data rates may apply</li>
+                    <li>Reply STOP to unsubscribe</li>
+                    <li>Reply HELP for help</li>
+                    <li>Consent is not a condition of purchase</li>
+                  </ul>
+                  <p className="pt-1">
+                    View our{" "}
+                    <Link href="/privacy-policy" className="text-primary underline hover:no-underline">
+                      Privacy Policy
+                    </Link>{" "}
+                    and{" "}
+                    <Link href="/terms-and-conditions" className="text-primary underline hover:no-underline">
+                      Terms & Conditions
+                    </Link>
+                  </p>
+                </div>
+              </div>
+
+              {/* Privacy Policy & Terms Checkbox - Required */}
+              <div className="flex items-start gap-3">
+                <Checkbox
+                  id="terms-consent"
+                  checked={termsAccepted}
+                  onCheckedChange={(checked) => setTermsAccepted(checked === true)}
+                  disabled={isSubmitting}
+                  required
+                  className="mt-1"
+                />
+                <label htmlFor="terms-consent" className="text-sm leading-relaxed cursor-pointer">
+                  I accept the{" "}
+                  <Link href="/privacy-policy" className="text-primary underline hover:no-underline">
+                    Privacy Policy
+                  </Link>{" "}
+                  and{" "}
+                  <Link href="/terms-and-conditions" className="text-primary underline hover:no-underline">
+                    Terms & Conditions
+                  </Link>{" "}
+                  *
+                </label>
               </div>
 
               {message && (
@@ -179,7 +270,7 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
                 </div>
               )}
 
-              <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+              <Button type="submit" size="lg" className="w-full" disabled={isSubmitting || !termsAccepted}>
                 {isSubmitting ? (
                   "Sending..."
                 ) : (
