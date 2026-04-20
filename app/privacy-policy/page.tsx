@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
           <div className="max-w-4xl mx-auto prose prose-slate dark:prose-invert">
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl mb-8">Privacy Policy</h1>
             <p className="text-muted-foreground mb-8">
-              <strong>Last Updated:</strong> January 2025
+              <strong>Last Updated:</strong> January 2026
             </p>
 
             <section className="mb-8">
